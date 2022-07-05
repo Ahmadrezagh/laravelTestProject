@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/','Front\IndexController@index')->name('front.index');
 Route::get('about','Front\AboutController@index')->name('front.about');
 Route::resource('menu','Front\ProductController');
+Route::post('test/{id}','Admin\ProductController@update')->name('test');
 
 // Authentication routes
 Auth::routes();
@@ -31,6 +32,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('categories', 'Admin\CategoryController');
         Route::resource('users', 'Admin\UserController');
         Route::resource('settings', 'Admin\SettingController');
+        Route::resource('products', 'Admin\ProductController');
     });
 
     // Default

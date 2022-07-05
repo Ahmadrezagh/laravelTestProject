@@ -33,13 +33,6 @@ class SettingSeeder extends Seeder
                 'value'=>'http://localhost:8000',
                 'setting_group_id'=>'1'
             ],
-
-            [   'name' => 'terms',
-                'type'=>'textarea',
-                'description'=>'Term Of Use',
-                'value'=>'<p>Some rules...</p>',
-                'setting_group_id'=>'2'
-            ],
             [   'name' => 'about_us',
                 'type'=>'textarea',
                 'description'=>'About us',
@@ -47,12 +40,6 @@ class SettingSeeder extends Seeder
 We aim to home-produce as much as possiblefor the best quality, and to reduce food mcious cakes, traditional Devon soups, sauces and accompanimentsion.We aim to home-produce as much as possiblefor the best quality, and to reduce food mcious cakes.
 </p>',
                 'setting_group_id'=>'2'
-            ],
-            [   'name' => 'contact_us',
-                'type'=>'textarea',
-                'description'=>'Contact us',
-                'value'=>'<p>Contact US</p>',
-                'setting_group_id'=>'3'
             ],
             [   'name' => 'email',
                 'type'=>'string',

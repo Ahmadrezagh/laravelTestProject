@@ -18,27 +18,25 @@ class PermissionSeeder extends Seeder
         $permissions = [
             [
                 'Admin',
-                'مدیر ها'
             ],
             [
                 'Category',
-                'دسته بندی ها'
             ],
             [
                 'User',
-                'کاربران'
             ],
             [
                 'Setting',
-                'تنظیمات'
-            ]
+            ],
+            [
+                'Products',
+            ],
         ];
         foreach ($permissions as $permission)
         {
             Permission::create([
                 'name' => $permission[0],
                 'english_name' => $permission[0],
-                'persian_name' => $permission[1]
             ]);
         }
     }
