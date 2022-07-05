@@ -14,13 +14,15 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Frontend routes
+Route::get('/','Front\IndexController@index')->name('front.index');
+Route::get('about','Front\AboutController@index')->name('front.about');
+Route::resource('menu','Front\ProductController');
 
+// Authentication routes
 Auth::routes();
 
-// Admin Part
+// Authenticated routes
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
         // Amin routes
@@ -30,6 +32,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('users', 'Admin\UserController');
         Route::resource('settings', 'Admin\SettingController');
     });
+
     // Default
     Route::get('/home', 'HomeController@index')->name('home');
 });

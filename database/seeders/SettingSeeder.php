@@ -18,7 +18,7 @@ class SettingSeeder extends Seeder
             [   'name' => 'name',
                 'type'=>'string',
                 'description'=>'Website name',
-                'value'=>'Admin Panel Laravel 9',
+                'value'=>'Red Chili',
                 'setting_group_id'=>'1'
             ],
             [   'name' => 'logo',
@@ -43,7 +43,9 @@ class SettingSeeder extends Seeder
             [   'name' => 'about_us',
                 'type'=>'textarea',
                 'description'=>'About us',
-                'value'=>'<p>About US</p>',
+                'value'=>'<p>
+We aim to home-produce as much as possiblefor the best quality, and to reduce food mcious cakes, traditional Devon soups, sauces and accompanimentsion.We aim to home-produce as much as possiblefor the best quality, and to reduce food mcious cakes.
+</p>',
                 'setting_group_id'=>'2'
             ],
             [   'name' => 'contact_us',
@@ -55,14 +57,20 @@ class SettingSeeder extends Seeder
             [   'name' => 'email',
                 'type'=>'string',
                 'description'=>'E-mail',
-                'value'=>'support@site.com',
-                'setting_group_id'=>'2'
+                'value'=>'info@redchili.com',
+                'setting_group_id'=>'3'
             ],
             [   'name' => 'phone',
                 'type'=>'string',
                 'description'=>'Phone',
-                'value'=>'+1 123 456 7892',
-                'setting_group_id'=>'2'
+                'value'=>'812324567',
+                'setting_group_id'=>'3'
+            ],
+            [   'name' => 'address',
+                'type'=>'string',
+                'description'=>'Address',
+                'value'=>'102, Broad Street, Melbourne, Australia',
+                'setting_group_id'=>'3'
             ],
         ];
         foreach ($settings as $setting)

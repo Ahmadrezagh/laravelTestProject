@@ -14,4 +14,8 @@ class Category extends Model
         'name','parent_id','slug'
     ];
 
+    public function products()
+    {
+        return $this->morphedByMany(Product::class, 'categorizable');
+    }
 }
