@@ -21,6 +21,7 @@
 - open terminal in Linux/Mac or CMD in windows
 - `git clone git@github.com:Ahmadrezagh/AdminPanelLaravel9-English.git`
 - `cp .env.example .env` 
+- edit database config in `.env` file 
 - `composer install`
 - `php artisan install`
 
