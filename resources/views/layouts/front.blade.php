@@ -7439,6 +7439,9 @@ Click the help icon above to learn more.
                 opacity: 1;
             }</style>
     </noscript>
+
+    @toastr_css
+
 </head>
 <body class="page-template-default page page-id-3107 wp-embed-responsive theme-redchili woocommerce-js wls_unknown wls_windows header-style-1 has-topbar topbar-style-1 no-sidebar product-grid-view wpb-js-composer js-comp-ver-6.6.0 vc_responsive">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
@@ -7642,7 +7645,7 @@ Click the help icon above to learn more.
                                     </li>
                                     <li id="menu-item-2398"
                                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2398">
-                                        <a href="#">Contact</a>
+                                        <a href="{{route('contact.index')}}">Contact</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -8385,10 +8388,21 @@ Click the help icon above to learn more.
         <ul></ul>
     </div>
 </div>
+
+@jquery
+@toastr_js
+@toastr_render
+@foreach ($errors->all() as $error)
+    <script>
+        toastr.error('{{$error}}')
+    </script>
+
+@endforeach
 <script>
     $(".search-close-button").on("click",function(){
         alert("ahmad")
     })
 </script>
+@yield('js')
 </body>
 </html>

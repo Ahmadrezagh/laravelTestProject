@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/','Front\IndexController@index')->name('front.index');
 Route::get('about','Front\AboutController@index')->name('front.about');
 Route::resource('menu','Front\ProductController');
+Route::resource('contact','Front\ContactController');
 Route::post('test/{id}','Admin\ProductController@update')->name('test');
 
 // Authentication routes

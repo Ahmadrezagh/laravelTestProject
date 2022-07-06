@@ -1,5 +1,5 @@
 @extends('layouts.front')
-@section('title','About Us')
+@section('title','Not Found')
 @section('content')
     <!-- content -->
 
@@ -12,9 +12,7 @@
                             <div class="vc_row wpb_row vc_row-fluid">
                                 <div class="wpb_column vc_column_container vc_col-sm-12">
                                     <div class="vc_column-inner">
-                                       <h5>
-                                           {!! setting('about_us') !!}
-                                       </h5>
+                                        <h5>404 - Not Found</h5>
                                     </div>
                                 </div>
                             </div>
