@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Product\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -40,7 +41,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validated();
+        $validator = Validator::make($request->all(), [
+            'name' => ['required'],
+            'categories' => ['nullable'],
+            'description' => ['nullable'],
+            'in_stock' => ['nullable'],
+            'price' => ['nullable'],
+            'ingredients' => ['nullable'],
+            'nutrition' => ['nullable']
+        ]);
+        $validated = $validator->validated();
         $validated['ingredients'] = json_encode($request->ingredients);
         $validated['nutrition'] = json_encode($request->nutrition);
         $product = Product::create($validated);
