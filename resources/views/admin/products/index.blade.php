@@ -53,6 +53,7 @@
                                                         <!-- form start -->
 
                                                         <form method="POST"
+                                                              id="formCreate"
                                                               action="{{route('products.store')}}"
                                                               enctype="multipart/form-data">
                                                             @csrf
@@ -76,7 +77,7 @@
                                                                            class="form-control"
                                                                            id="exampleInputEmail1"
                                                                            placeholder="Enter name" required
-                                                                           >
+                                                                    >
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="exampleInputEmail1">description</label>
@@ -130,6 +131,8 @@
                                                                             <div class="card-body"
                                                                                  id="ingredients">
                                                                                 <button type="button"
+                                                                                        onclick="ingredientsAppend('Create')"
+                                                                                        id="ingredientsAppendCreate"
                                                                                         class="text-center btn btn-success mt-3 ingredientsAppendButton"
                                                                                         style="width: 100%">+
                                                                                 </button>
@@ -157,6 +160,8 @@
                                                                             <div class="card-body"
                                                                                  id="nutrition">
                                                                                 <button type="button"
+                                                                                        id="nutritionAppendCreate"
+                                                                                        onclick="nutritionAppend('Create')"
                                                                                         class="text-center btn btn-success mt-3 nutritionAppendButton"
                                                                                         style="width: 100%">+
                                                                                 </button>
@@ -286,9 +291,10 @@
                                                             <div class="modal-body">
                                                                 <!-- form start -->
                                                                 <form method="POST"
+                                                                      id="form{{$product->id}}"
                                                                       action="{{route('products.update',$product->id)}}"
                                                                       enctype="multipart/form-data"
-                                                                      onsubmit="submitUpdate()"
+                                                                        {{--onsubmit="submitUpdate()"--}}
                                                                 >
                                                                     @csrf
                                                                     @method('PATCH')
@@ -379,6 +385,8 @@
                                                                                     <div class="card-body"
                                                                                          id="ingredients">
                                                                                         <button type="button"
+                                                                                                onclick="ingredientsAppend({{$product->id}})"
+                                                                                                id="ingredientsAppend{{$product->id}}"
                                                                                                 class="text-center btn btn-success mt-3 ingredientsAppendButton"
                                                                                                 style="width: 100%">+
                                                                                         </button>
@@ -426,6 +434,8 @@
                                                                                     <div class="card-body nutritionUpdate"
                                                                                     >
                                                                                         <button type="button"
+                                                                                                onclick="nutritionAppend({{$product->id}})"
+                                                                                                id="nutritionAppend{{$product->id}}"
                                                                                                 class="text-center btn btn-success mt-3 nutritionAppendButton"
                                                                                                 style="width: 100%">+
                                                                                         </button>
@@ -503,41 +513,28 @@
             return result;
         }
 
-        $(".ingredientsAppendButton").on('click', function () {
-            let randId = makeid(8)
-            let parentDiv = $(this).parent().append(`
-<div class="row mt-3 mx-auto " style="width: 100%">
-                                                                                                    <div class="col-10">
-                                                                                                        <input type="text"
-                                                                                                               class="form-control "
-                                                                                                               name="ingredients[]">
-                                                                                                    </div>
-                                                                                                    <div class="col-2">
-                                                                                                        <button type="button" class="btn btn-danger  " style="width: 100%" onclick="removeItem(this)">
-                                                                                                            <i class="fas fa-trash-alt" ></i>
-                                                                                                        </button>
-                                                                                                    </div>
-                                                                                                </div>
-            `);
-        })
+        function ingredientsAppend(product_id) {
+            let part_1 = `<div class="row mt-3 mx-auto " style="width: 100%"><div class="col-10"><input type="text" form="form`;
+            let part_2 = `" class="form-control" name="ingredients[]"></div><div class="col-2">
+                <button type="button" class="btn btn-danger  " style="width: 100%" onclick="removeItem(this)">
+                    <i class="fas fa-trash-alt" ></i>
+                </button></div></div>`;
+            let part_3 = part_1.concat(product_id);
+            let final_tag = part_3.concat(part_2);
+            $("#ingredientsAppend" + product_id).parent().append(final_tag);
+        }
 
-        $(".nutritionAppendButton").on('click', function () {
-            let randId = makeid(8)
-            let parentDiv = $(this).parent().append(`
-<div class="row mt-3 mx-auto " style="width: 100%">
-                                                                                                    <div class="col-10">
-                                                                                                        <input type="text"
-                                                                                                               class="form-control "
-                                                                                                               name="nutrition[]">
-                                                                                                    </div>
-                                                                                                    <div class="col-2">
-                                                                                                        <button type="button" class="btn btn-danger  " style="width: 100%" onclick="removeItem(this)">
-                                                                                                            <i class="fas fa-trash-alt" ></i>
-                                                                                                        </button>
-                                                                                                    </div>
-                                                                                                </div>
-            `);
-        })
+        function nutritionAppend(product_id) {
+            let part_1 = `<div class="row mt-3 mx-auto " style="width: 100%"><div class="col-10"><input type="text" form="form`;
+            let part_2 = `" class="form-control" name="nutrition[]"></div><div class="col-2">
+                        <button type="button" class="btn btn-danger  " style="width: 100%" onclick="removeItem(this)">
+                            <i class="fas fa-trash-alt" ></i>
+                        </button></div></div>`;
+            let part_3 = part_1.concat(product_id);
+            let final_tag = part_3.concat(part_2);
+            $("#nutritionAppend" + product_id).parent().append(final_tag);
+        }
+
         $(".removeItem").on('click', function () {
             $(this).parent().parent().remove()
         })
